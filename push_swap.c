@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/22 15:14:49 by laltarri         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:15:17 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_atoi(const char *str)
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
 		control = 1;
+		
 		num = num * 10 + (str[i++] - '0');
 	}
 	if ((control == 0 || i > 0) && str[i] != '\0' && \
@@ -41,32 +42,35 @@ int	ft_atoi(const char *str)
 	return (num * sign);
 }
 
-void	ft_putchar()
+void	ft_puterror(void)
 {
-	write(1, "Error",5);
+	write(2, "Error\n", 6);
 }
+
+
 
 int main(int argc, char **argv)
 {
 	int i;
+	int num;
 
 	i = 1;
+	num = 0;
 	if(argc != 1)
 	{
 		while (argv[i] != NULL)
-        {
- 			 	int num = ft_atoi(argv[i]);
-				if(num == -1)
-				{
-					ft_putchar();
-					return (0);
-				}
-				printf("%d\n", num);	
+        {	
+			num = ft_atoi(argv[i]);
+			if(num == -1)
+			{
+				ft_puterror();
+				return (0);
+			}
+			printf("%d\n", num);	
 			i++;
 		}
 	}
 	else
-   		write(1,"ERROR",5);
-	write(1,"\n",1);
+   		ft_puterror();
 	return (0);
 }
