@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/22 20:57:03 by laltarri         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:35:02 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,46 @@ int check_argv(int argc, char **argv)
 	while (++i < argc)
 	{
 		j = ft_strlen(argv[i]);
+		if(argv[i][0] == '-' || argv[i][0] == '+')
+			e++;
 		while(e < j)
 		{
 			if (!(argv[i][e] >= '0' && argv[i][e] <= '9'))
-			return(0);
+				return(0);
 			e++;
 		}
 	}
 	return (1);
 }
 
-
 // el numero 0 significa false
+
+int *arrstr_to_arrint(int argc, char **argv)
+{
+	int *nums = NULL;
+	int i;
+	
+	i = 1;
+	nums = (int *)malloc(argc * sizeof(int));
+	while(i < argc)
+	{
+		nums[i] = ft_atoi(argv[i]);
+		i++;
+	}
+	return (nums);
+}
+
 
 int main(int argc, char **argv)
 {
 	int i;
-	//int *nums;
+	int *nums;
 
 	i = 1;	
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
-	/*nums = arrstr_to_arrint(argv);
+	nums = arrstr_to_arrint(argc,argv);
+	/*
 	if(check_duplicate(nums) == 0)
 		return (ft_puterror());
 	*/printf("OK\n");

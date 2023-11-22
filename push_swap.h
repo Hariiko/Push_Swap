@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:24 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/22 20:26:54 by laltarri         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:24:19 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <unistd.h>
-
+# include <stdlib.h>
 
 
 #endif
