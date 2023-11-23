@@ -115,8 +115,7 @@ int main(int argc, char **argv)
 	nums = arrstr_to_arrint(argc,argv);
 	if (!nums)
 		return (ft_puterror());
-	/*
-	if(check_duplicate(nums) == 0)
+	/*if(check_duplicate(nums) == 0)
 		return (ft_puterror());
 	*/printf("OK\n");
 	return (0);
