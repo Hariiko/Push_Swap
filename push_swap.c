@@ -29,7 +29,11 @@ int	ft_atoi(const char *str)
 	else if (str[i] == '+')
 		i++;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))	
+	{
+		if (num > INT_MAX / 10 || (num == INT_MAX / 10 && (str[i] - '0') > INT_MAX % 10))
+            return INT_MAX; 
 		num = num * 10 + (str[i++] - '0');
+	}
 	return (num * sign);
 }
 
@@ -75,15 +79,26 @@ int check_argv(int argc, char **argv)
 
 int *arrstr_to_arrint(int argc, char **argv)
 {
-	int *nums = NULL;
+	int *nums;
 	int i;
-	
+	int result;
+
+	nums = NULL;
+	result = 0;
 	i = 1;
 	nums = (int *)malloc(argc * sizeof(int));
+	if(!nums)
+		return (NULL);
 	while(i < argc)
 	{
-		nums[i] = ft_atoi(argv[i]);
-		i++;
+		result = ft_atoi(argv[i]);
+        if (result == INT_MAX)
+        {
+            free(nums);
+            return (NULL);
+		}
+        nums[i - 1] = result;
+        i++;
 	}
 	return (nums);
 }
@@ -98,6 +113,8 @@ int main(int argc, char **argv)
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
 	nums = arrstr_to_arrint(argc,argv);
+	if (!nums)
+		return (ft_puterror());
 	/*
 	if(check_duplicate(nums) == 0)
 		return (ft_puterror());
