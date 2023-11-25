@@ -12,6 +12,34 @@
 
 #include "push_swap.h"
 
+<<<<<<< HEAD
+=======
+int	ft_atoi(const char *str)
+{
+	int	num;
+	int	i;
+	int	sign;
+
+	sign = 1;
+	num = 0;
+	i = 0;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))	
+	{
+		if (num > INT_MAX / 10 || (num == INT_MAX / 10 && (str[i] - '0') > INT_MAX % 10))
+            return INT_MAX; 
+		num = num * 10 + (str[i++] - '0');
+	}
+	return (num * sign);
+}
+
+>>>>>>> e72a612519c54b5c5d37175a3372d669fafadbce
 int	ft_puterror(void)
 {
 	write(2, "Error\n", 6);
@@ -71,17 +99,26 @@ int check_argv(int argc, char **argv)
 
 int *arrstr_to_arrint(int argc, char **argv)
 {
-	int *nums = NULL;
+	int *nums;
 	int i;
-	
+	int result;
+
+	nums = NULL;
+	result = 0;
 	i = 1;
 	nums = (int *)malloc(argc * sizeof(int));
 	if(!nums)
 		return (NULL);
 	while(i < argc)
 	{
-		nums[i] = ft_atoi(argv[i]);
-		i++;
+		result = ft_atoi(argv[i]);
+        if (result == INT_MAX)
+        {
+            free(nums);
+            return (NULL);
+		}
+        nums[i - 1] = result;
+        i++;
 	}
 	return (nums);
 }
@@ -96,8 +133,14 @@ int main(int argc, char **argv)
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
 	nums = arrstr_to_arrint(argc,argv);
+<<<<<<< HEAD
 	
 	if(check_duplicate(nums) == 0)
+=======
+	if (!nums)
+		return (ft_puterror());
+	/*if(check_duplicate(nums) == 0)
+>>>>>>> e72a612519c54b5c5d37175a3372d669fafadbce
 		return (ft_puterror());
 	printf("OK\n");
 	return (0);
