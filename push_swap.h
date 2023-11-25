@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:24 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/22 22:24:19 by laltarri         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:29:49 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+int ft_strlen(const char *s);
+int ft_atoi(const char *str);
 
 #endif

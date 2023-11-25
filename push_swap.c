@@ -6,32 +6,11 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/22 22:35:02 by laltarri         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:08:16 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_atoi(const char *str)
-{
-	int	num;
-	int	i;
-	int	sign;
-
-	sign = 1;
-	num = 0;
-	i = 0;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))	
-		num = num * 10 + (str[i++] - '0');
-	return (num * sign);
-}
 
 int	ft_puterror(void)
 {
@@ -39,25 +18,42 @@ int	ft_puterror(void)
 	return (-1);
 }
 
-int ft_strlen(const char *s)
+int check_duplicate(int *nums)
 {
-	int	i;
+	int i;
+	int j;
+	int save_number;
 
 	i = 0;
-	while (s[i] != '\0')
+	
+	while(!nums[i])
+	{
+		save_number = nums[i];
+		j = 0;
+		
+		while(!nums[j])
+		{
+			if(j == i)
+				j++;
+			if(save_number == nums[j])
+				return (0);
+			j++;
+		}
 		i++;
-	return (i);
+	}
+	return (1);
 }
 
 int check_argv(int argc, char **argv)
 {
 	int i;
 	int j;
-	int e = 0;
+	int e;
 	
 	i = 0;
 	while (++i < argc)
 	{
+		e = 0;
 		j = ft_strlen(argv[i]);
 		if(argv[i][0] == '-' || argv[i][0] == '+')
 			e++;
@@ -80,6 +76,8 @@ int *arrstr_to_arrint(int argc, char **argv)
 	
 	i = 1;
 	nums = (int *)malloc(argc * sizeof(int));
+	if(!nums)
+		return (NULL);
 	while(i < argc)
 	{
 		nums[i] = ft_atoi(argv[i]);
@@ -98,9 +96,9 @@ int main(int argc, char **argv)
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
 	nums = arrstr_to_arrint(argc,argv);
-	/*
+	
 	if(check_duplicate(nums) == 0)
 		return (ft_puterror());
-	*/printf("OK\n");
+	printf("OK\n");
 	return (0);
 }
