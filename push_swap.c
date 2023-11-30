@@ -18,18 +18,18 @@ int	ft_puterror(void)
 	return (-1);
 }
 
-int check_duplicate(int *nums, int size)
+int check_duplicate(int argc, char ** argv)
 {
 	int i;
 	int j;
 
 	i = 1;
-	while(i < size)
+	while(i < argc)
 	{
-		j = i + 1;		
-		while(j < size)
+		j = 1;		
+		while(j < argc)
 		{
-			if(nums[i] == nums[j])
+			if(i != j && ft_atol(argv[i]) == ft_atol(argv[j]))
 				return (0);
 			j++;
 		}
@@ -61,13 +61,12 @@ int check_argv(int argc, char **argv)
 	return (1);
 }
 
-// el numero 0 significa false
-
 int *arrstr_to_arrint(int argc, char **argv)
 {
 	int *nums;
 	int i;
-
+	long long num;
+	
 	nums = NULL;
 	i = 1;
 	nums = (int *)malloc(argc * sizeof(int));
@@ -75,25 +74,58 @@ int *arrstr_to_arrint(int argc, char **argv)
 		return (NULL);
 	while(i < argc)
 	{
-		nums[i] = ft_atoi(argv[i]);
+		num = ft_atol(argv[i]);
+		printf("%d\n",num);
+		if(num > INT_MAX || num < INT_MIN)
+		{
+			free(nums);
+			return (NULL);
+		}
 		i++;
 	}
 	return (nums);
 }
 
 
+int prueba(char *str) {
+    int i = 0;
+    int contador = 0;
+    
+    while (str[i] != '\0')
+	{
+        if (str[0] == '-' || str[0] == '+')
+		{
+            contador++; 
+            while (str[i + 1] != '\0' && str[i + 1] != '-' && str[i + 1] != '+')
+			{
+                i++;
+                contador++;
+            }
+        }
+        i++;
+    }
+	return (contador);
+}
+
 int main(int argc, char **argv)
 {
-	int i;
+	int i=1;
 	int *nums;
 
-	i = 1;	
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
-	nums = arrstr_to_arrint(argc,argv);
-	
-	if(check_duplicate(nums,argc) == 0)
+	while(i < argc)
+	{
+		if(prueba(argv[i]) > 12)
+			return (ft_puterror());
+		i++;
+	}
+	if(check_duplicate(argc,argv) == 0)
 		return (ft_puterror());
+	nums = arrstr_to_arrint(argc,argv);
+	if(nums == NULL)
+		return(ft_puterror());
+
 	printf("OK\n");
 	return (0);
 }

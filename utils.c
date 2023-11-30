@@ -22,9 +22,9 @@ int ft_strlen(const char *s)
     return (i);
 }
 
-int ft_atoi(const char *str)
+long long ft_atol(const char *str)
 {
-    int num;
+    long long num;
     int i;
     int sign;
 
@@ -38,7 +38,7 @@ int ft_atoi(const char *str)
     }
     else if (str[i] == '+')
         i++;
-    while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
         num = num * 10 + (str[i++] - '0');
-    return (num * sign);
+	return (num * sign);
 }

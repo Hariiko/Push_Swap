@@ -19,6 +19,6 @@
 # include <stdlib.h>
 
 int ft_strlen(const char *s);
-int ft_atoi(const char *str);
+long long ft_atol(const char *str);
 
 #endif
