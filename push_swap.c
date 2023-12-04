@@ -61,31 +61,36 @@ int check_argv(int argc, char **argv)
 	return (1);
 }
 
-int *arrstr_to_arrint(int argc, char **argv)
+t_list *arrstr_to_arrint(int argc, char **argv)
 {
-	int *nums;
+	t_list *nums;
+	t_list *tem;
 	int i;
 	long long num;
 	
 	nums = NULL;
+	tem = NULL;
 	i = 1;
-	nums = (int *)malloc(argc * sizeof(int));
-	if(!nums)
-		return (NULL);
+
 	while(i < argc)
 	{
 		num = ft_atol(argv[i]);
-		printf("%d\n",num);
 		if(num > INT_MAX || num < INT_MIN)
 		{
-			free(nums);
+			ft_lstclear(&nums);
 			return (NULL);
 		}
+		tem = ft_lstnew(num);
+		if (!tem)
+        {
+            ft_lstclear(&nums);
+            return (NULL);
+        }
+		ft_lstadd_back(&nums,tem);
 		i++;
 	}
 	return (nums);
 }
-
 
 int prueba(char *str) {
     int i = 0;
@@ -107,10 +112,20 @@ int prueba(char *str) {
 	return (contador);
 }
 
+void print_list(t_list *head)
+{
+    while (head)
+    {
+        printf("%d ", head->num);
+        head = head->next;
+    }
+    printf("\n");
+}
+
 int main(int argc, char **argv)
 {
 	int i=1;
-	int *nums;
+	t_list	*a;
 
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
@@ -122,10 +137,11 @@ int main(int argc, char **argv)
 	}
 	if(check_duplicate(argc,argv) == 0)
 		return (ft_puterror());
-	nums = arrstr_to_arrint(argc,argv);
-	if(nums == NULL)
+	a = arrstr_to_arrint(argc,argv);
+	if(a == NULL)
 		return(ft_puterror());
-
+	print_list(a);
+	ft_lstclear(&a);
 	printf("OK\n");
 	return (0);
 }

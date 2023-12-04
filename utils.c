@@ -42,3 +42,4 @@ long long ft_atol(const char *str)
         num = num * 10 + (str[i++] - '0');
 	return (num * sign);
 }
+
