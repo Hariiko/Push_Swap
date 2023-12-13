@@ -137,9 +137,12 @@ int main(int argc, char **argv)
 	}
 	if(check_duplicate(argc,argv) == 0)
 		return (ft_puterror());
+	int n = sizeof(argv) / sizeof(argv[1]);
 	a = arrstr_to_arrint(argc,argv);
 	if(a == NULL)
 		return(ft_puterror());
+	a = radixSort(a, n);
+
 	print_list(a);
 	ft_lstclear(&a);
 	printf("OK\n");

@@ -32,4 +32,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 int ft_strlen(const char *s);
 long long ft_atol(const char *str);
 
+//
+t_list *radixSort(t_list *a, int n);
+int	maxNum(t_list *lst);
+int dequeue(t_list** queue);
+void enqueue(t_list** queue, int num);
+
 #endif
