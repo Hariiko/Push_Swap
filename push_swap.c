@@ -12,12 +12,6 @@
 
 #include "push_swap.h"
 
-int	ft_puterror(void)
-{
-	write(2, "Error\n", 6);
-	return (-1);
-}
-
 int check_duplicate(int argc, char ** argv)
 {
 	int i;

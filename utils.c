@@ -43,3 +43,14 @@ long long ft_atol(const char *str)
 	return (num * sign);
 }
 
+int	ft_putend(char *str, int num)
+{
+	write(1, str, num);
+	write(1,"\n",1);
+}
+
+int	ft_puterror(void)
+{
+	write(2, "Error\n", 6);
+	return (-1);
+}
