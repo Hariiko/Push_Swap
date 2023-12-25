@@ -35,4 +35,7 @@ int ft_strlen(const char *s);
 long long ft_atol(const char *str);
 int	ft_putend(char *str, int num);
 t_list	*ft_lstlast(t_list *lst);
+int pa(t_list *a, t_list *b);
+int pb(t_list *b, t_list *a);
+int ra(t_list *a);
 #endif

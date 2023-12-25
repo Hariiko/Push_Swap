@@ -35,12 +35,21 @@ void radix_sort(t_list *stack_a, t_list *stack_b)
 		{
 			head_a = stack_a;
 			if (((head_a->num >> i) & 1) == 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-		}
+			{	ra(stack_a);
+                printf("ff");
+            }
+            else
+			{
+                	pb(stack_a, stack_b);
+		    printf("eee");
+            }
+        }
+
 		while (ft_lstsize(stack_b) != 0)
-			pa(stack_a, stack_b);
-		i++;
+			{
+                pa(stack_a, stack_b);
+             printf("qq");
+            }
+        i++;
 	}
 }
