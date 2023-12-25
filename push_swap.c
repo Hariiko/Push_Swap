@@ -120,6 +120,7 @@ int main(int argc, char **argv)
 {
 	int i=1;
 	t_list	*a;
+	t_list	*b;
 
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
@@ -131,11 +132,11 @@ int main(int argc, char **argv)
 	}
 	if(check_duplicate(argc,argv) == 0)
 		return (ft_puterror());
-	int n = sizeof(argv) / sizeof(argv[1]);
+	
 	a = arrstr_to_arrint(argc,argv);
 	if(a == NULL)
 		return(ft_puterror());
-	a = radixSort(a, n);
+	radix_sort(a, b);
 
 	print_list(a);
 	ft_lstclear(&a);

@@ -28,16 +28,11 @@ void	ft_lstclear(t_list **lst);
 t_list	*ft_lstnew(int num);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int	ft_lstsize(t_list *lst);
-void ft_lstprint(t_list *head);
+void radix_sort(t_list *stack_a, t_list *stack_b);
 //
 int	ft_puterror(void);
 int ft_strlen(const char *s);
 long long ft_atol(const char *str);
 int	ft_putend(char *str, int num);
-//
-t_list *radixSort(t_list *a, int n);
-int	maxNum(t_list *lst);
-int dequeue(t_list** queue);
-void enqueue(t_list** queue, int num);
-
+t_list	*ft_lstlast(t_list *lst);
 #endif

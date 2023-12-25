@@ -15,7 +15,10 @@ HEADER	=	push_swap.h
 NAME	=	tt
 
 SRCS	=	push_swap.c \
-			utils.c
+			utils.c		\
+			utils_list.c \
+			radix.c 	\
+			instructions.c 
 
 OBJS	= 	$(SRCS:.c=.o)
 
