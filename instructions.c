@@ -2,27 +2,26 @@
 
 int swap(t_list **stack)
 {
-    t_list  *temp;
-    t_list  *temp2;
+    t_list  *head;
+    t_list  *next;
     int     tmp_value;
     int     tmp_index;
 
-    if(ft_lstsize(stack) <= 1)
+    if(ft_lstsize(*stack) <= 1)
         return (-1);
         
-    temp = stack;
-    temp2 = stack->next;
+    head = *stack;
+    next = head->next;
 
-    if (!temp || !temp2)
+    if (!head || !next)
         return (ft_puterror());
 
-    tmp_value = temp->num;
-	tmp_index = temp->index;
-	temp->num = temp2->num;
-	temp->index = temp->index;
-	temp2->num = tmp_value;
-	temp2->index = tmp_index;
-
+    tmp_value = head->num;
+	tmp_index = head->index;
+	head->num = next->num;
+	head->index = next->index;
+	next->num = tmp_value;
+	next->index = tmp_index;
     return (0);
 }
 
@@ -44,7 +43,7 @@ int sb (t_list **b)
 
 int ss(t_list **a, t_list **b)
 {
-    if(ft_lstsize(a) <=1 || ft_lstsize(b) <= 1)
+    if(ft_lstsize(*a) <=1 || ft_lstsize(*b) <= 1)
         return (ft_puterror()); 
     swap(a);
     swap(b);
@@ -58,23 +57,23 @@ int push (t_list **to, t_list **from)
 	t_list	*head_to;
 	t_list	*head_from;
 
-	if (ft_lstsize(from) == 0)
+	if (ft_lstsize(*from) == 0)
     		return (-1);
-	head_to = to;
-	head_from = from;
+	head_to = *to;
+	head_from = *from;
 	tmp = head_from;
 	head_from = head_from->next;
-	from = head_from;
+	*from = head_from;
 	if (!head_to)
 	{
 		head_to = tmp;
 		head_to->next = NULL;
-		to = head_to;
+		*to = head_to;
 	}
 	else
 	{
  		tmp->next = head_to;
-		to = tmp;
+		*to = tmp;
 	}
 	return (0);
 }
@@ -100,11 +99,11 @@ int rotate(t_list **a)
     t_list	*head;
 	t_list	*tail;
 
-	if (ft_lstsize(a) < 2)
+	if (ft_lstsize(*a) < 2)
 		return (ft_puterror());
-	head = a;
+	head = *a;
 	tail = ft_lstlast(head);
-	a = head->next;
+	*a = head->next;
 	head->next = NULL;
 	tail->next = head;
     return (0);
@@ -139,9 +138,9 @@ int rotatereverse(t_list **a)
     t_list	*head;
 	t_list	*tail;
 
-	if (ft_lstsize(a) < 2)
+	if (ft_lstsize(*a) < 2)
 		return (-1);
-	head = a;
+	head = *a;
 	tail = ft_lstlast(head);
 	while (head)
 	{
@@ -152,8 +151,8 @@ int rotatereverse(t_list **a)
 		}
 		head = head->next;
 	}
-	tail->next = a;
-	a = tail;
+	tail->next = *a;
+	*a = tail;
 	return (0);
 }
 

@@ -31,6 +31,11 @@ void radix_sort(t_list **stack_a, t_list **stack_b)
 	head_a = *stack_a;
 	size = ft_lstsize(head_a);
 	max_value = get_max_value(stack_a);
+	printf("%d",size);
+	printf("\n");
+	printf("%d", max_value);
+	printf("\n");
+	
 	while ((max_value >> i) != 0)
 	{
 		j = 0;

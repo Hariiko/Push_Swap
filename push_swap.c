@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/10 14:31:27 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:15:10 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ void print_list(t_list *head)
 int main(int argc, char **argv)
 {
 	int i=1;
-	t_list	*a;
-	t_list	*b;
+	t_list	**a;
+	t_list	**b;
 
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
@@ -132,14 +132,14 @@ int main(int argc, char **argv)
 	}
 	if(check_duplicate(argc,argv) == 0)
 		return (ft_puterror());
-	
-	a = arrstr_to_arrint(argc,argv);
+	a = (t_list **)malloc(sizeof(t_list));
+	*a = arrstr_to_arrint(argc,argv);
 	if(a == NULL)
 		return(ft_puterror());
-	b = ft_lstnew(0);
+	b = (t_list **)malloc(sizeof(t_list));
 	radix_sort(a, b);
-	print_list(a);
-	ft_lstclear(&a);
+	print_list(*a);
+	ft_lstclear(a);
 	printf("OK\n");
 	return (0);
 }
