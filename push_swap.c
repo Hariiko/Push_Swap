@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/25 19:50:31 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:31:27 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,8 @@ int main(int argc, char **argv)
 	a = arrstr_to_arrint(argc,argv);
 	if(a == NULL)
 		return(ft_puterror());
+	b = ft_lstnew(0);
 	radix_sort(a, b);
-
 	print_list(a);
 	ft_lstclear(&a);
 	printf("OK\n");

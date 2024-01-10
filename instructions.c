@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int swap(t_list *stack)
+int swap(t_list **stack)
 {
     t_list  *temp;
     t_list  *temp2;
@@ -16,17 +16,17 @@ int swap(t_list *stack)
     if (!temp || !temp2)
         return (ft_puterror());
 
-    tmp_value = next->value;
-	tmp_index = next->index;
-	temp->value = temp2->value;
-	temp->index = next2->index;
-	temp2->value = tmp_value;
+    tmp_value = temp->num;
+	tmp_index = temp->index;
+	temp->num = temp2->num;
+	temp->index = temp->index;
+	temp2->num = tmp_value;
 	temp2->index = tmp_index;
 
     return (0);
 }
 
-int sa (t_list *a )
+int sa (t_list **a)
 {
     if(swap(a) == -1)
         return (-1);
@@ -34,7 +34,7 @@ int sa (t_list *a )
     return (0);
 }
 
-int sb (t_list *b )
+int sb (t_list **b)
 {
     if(swap(b) == -1)
         return (-1);
@@ -42,7 +42,7 @@ int sb (t_list *b )
     return (0);
 }
 
-int ss(t_list *a, t_list *b)
+int ss(t_list **a, t_list **b)
 {
     if(ft_lstsize(a) <=1 || ft_lstsize(b) <= 1)
         return (ft_puterror()); 
@@ -52,7 +52,7 @@ int ss(t_list *a, t_list *b)
     return (0);
 }
 
-int push (t_list *to, t_list *from)
+int push (t_list **to, t_list **from)
 {
     t_list	*tmp;
 	t_list	*head_to;
@@ -79,7 +79,7 @@ int push (t_list *to, t_list *from)
 	return (0);
 }
 
-int pa(t_list *a, t_list *b)
+int pa(t_list **a, t_list **b)
 {
     if(push(a,b) == -1)
         return(ft_puterror());
@@ -87,7 +87,7 @@ int pa(t_list *a, t_list *b)
     return (0);
 }
 
-int pb(t_list *b, t_list *a)
+int pb(t_list **b, t_list **a)
 {
     if(push(b,a) == -1)
         return(ft_puterror());
@@ -95,7 +95,7 @@ int pb(t_list *b, t_list *a)
     return (0);
 }
 
-int rotate(t_list *a)
+int rotate(t_list **a)
 {
     t_list	*head;
 	t_list	*tail;
@@ -110,7 +110,7 @@ int rotate(t_list *a)
     return (0);
 }
 
-int ra(t_list *a)
+int ra(t_list **a)
 {
     if(rotate(a) == -1)
         return(ft_puterror());
@@ -118,7 +118,7 @@ int ra(t_list *a)
     return (0);
 }
 
-int rb(t_list *b)
+int rb(t_list **b)
 {
     if(rotate(b) == -1)
         return(ft_puterror());
@@ -126,7 +126,7 @@ int rb(t_list *b)
     return (0);
 }
 
-int rr(t_list *a, t_list *b)
+int rr(t_list **a, t_list **b)
 {
     if(rotate(a) == -1 || rotate(b) == -1)
         return(ft_puterror());
@@ -134,7 +134,7 @@ int rr(t_list *a, t_list *b)
     return (0);
 }
 
-int rotatereverse(t_list *a)
+int rotatereverse(t_list **a)
 {
     t_list	*head;
 	t_list	*tail;
@@ -157,7 +157,7 @@ int rotatereverse(t_list *a)
 	return (0);
 }
 
-int rra(t_list *a)
+int rra(t_list **a)
 {
     if(rotatereverse(a) == -1)
         return(ft_puterror());
@@ -165,7 +165,7 @@ int rra(t_list *a)
     return (0);
 }
 
-int rrb(t_list *b)
+int rrb(t_list **b)
 {
     if(rotatereverse(b) == -1)
         return(ft_puterror());
@@ -173,7 +173,7 @@ int rrb(t_list *b)
     return (0);
 }
 
-int rrr(t_list *a,t_list *b)
+int rrr(t_list **a,t_list **b)
 {
     if(rotatereverse(a) == -1 || rotatereverse(b))
         return(ft_puterror());
