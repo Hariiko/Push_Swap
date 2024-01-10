@@ -5,19 +5,23 @@ int swap(t_list *stack)
     t_list  *temp;
     t_list  *temp2;
     int     tmp_value;
+    int     tmp_index;
 
     if(ft_lstsize(stack) <= 1)
         return (-1);
-    
+        
     temp = stack;
     temp2 = stack->next;
 
     if (!temp || !temp2)
         return (ft_puterror());
 
-    tmp_value = temp->num;
-    temp->num = temp2->num;
-    temp2->num = tmp_value;
+    tmp_value = next->value;
+	tmp_index = next->index;
+	temp->value = temp2->value;
+	temp->index = next2->index;
+	temp2->value = tmp_value;
+	temp2->index = tmp_index;
 
     return (0);
 }
@@ -48,18 +52,31 @@ int ss(t_list *a, t_list *b)
     return (0);
 }
 
-int push (t_list *a, t_list *b)
+int push (t_list *to, t_list *from)
 {
-    t_list tmp;
-    if(ft_lstsize(b) == 0)
-        ft_puterror();
+    t_list	*tmp;
+	t_list	*head_to;
+	t_list	*head_from;
 
-  /*  if(!a)
-    {
-        a=
-    }
-*/
-    return (0);
+	if (ft_lstsize(from) == 0)
+    		return (-1);
+	head_to = to;
+	head_from = from;
+	tmp = head_from;
+	head_from = head_from->next;
+	from = head_from;
+	if (!head_to)
+	{
+		head_to = tmp;
+		head_to->next = NULL;
+		to = head_to;
+	}
+	else
+	{
+ 		tmp->next = head_to;
+		to = tmp;
+	}
+	return (0);
 }
 
 int pa(t_list *a, t_list *b)
@@ -78,12 +95,18 @@ int pb(t_list *b, t_list *a)
     return (0);
 }
 
-
-//
-
 int rotate(t_list *a)
 {
+    t_list	*head;
+	t_list	*tail;
 
+	if (ft_lstsize(a) < 2)
+		return (ft_puterror());
+	head = a;
+	tail = ft_lstlast(head);
+	a = head->next;
+	head->next = NULL;
+	tail->next = head;
     return (0);
 }
 
@@ -111,13 +134,27 @@ int rr(t_list *a, t_list *b)
     return (0);
 }
 
-
-//
-
 int rotatereverse(t_list *a)
 {
+    t_list	*head;
+	t_list	*tail;
 
-    return(0);
+	if (ft_lstsize(a) < 2)
+		return (-1);
+	head = a;
+	tail = ft_lstlast(head);
+	while (head)
+	{
+		if (head->next->next == NULL)
+		{
+			 head->next = NULL;
+			 break ;
+		}
+		head = head->next;
+	}
+	tail->next = a;
+	a = tail;
+	return (0);
 }
 
 int rra(t_list *a)
