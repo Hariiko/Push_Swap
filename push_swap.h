@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:24 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/10 16:08:06 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:47:16 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ t_list	*ft_lstlast(t_list *lst);
 int pa(t_list **a, t_list **b);
 int pb(t_list **b, t_list **a);
 int ra(t_list **a);
+void	index_stack(t_list **stack);
+
 #endif

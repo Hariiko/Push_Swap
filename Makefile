@@ -6,7 +6,7 @@
 #    By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 14:10:17 by laltarri          #+#    #+#              #
-#    Updated: 2024/01/10 14:09:15 by laltarri         ###   ########.fr        #
+#    Updated: 2024/01/15 15:51:27 by laltarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CC	= 	gcc
 
 RM	= 	rm -f
 
-FLAGS	= 	-Wall -Wextra -Werror
+FLAGS	= -g -Wall -Wextra -Werror
 
 .c.o :
 	${CC} ${FLAGS} -c $< -o $@

@@ -1,19 +1,22 @@
 #include "push_swap.h"
 
-static int get_max_value(t_list **stack)
+static int	get_max_value(t_list **stack)
 {
-	t_list *head;
-	int max;
-	int max_bits;
+t_list	*head;
+	int		max;
+	int		max_bits;
 
 	head = *stack;
-	max_bits = 0 ;
+	max = head->index;
+	max_bits = 0;
 	while (head)
 	{
+		printf("%d ",head->index);
 		if (head->index > max)
 			max = head->index;
 		head = head->next;
 	}
+	printf("\n");
 	while ((max >> max_bits) != 0)
 		max_bits++;
 	return (max_bits);
@@ -31,12 +34,12 @@ void radix_sort(t_list **stack_a, t_list **stack_b)
 	head_a = *stack_a;
 	size = ft_lstsize(head_a);
 	max_value = get_max_value(stack_a);
-	printf("%d",size);
+	printf("%d tamano",size);
 	printf("\n");
-	printf("%d", max_value);
+	printf("%d bite",max_value);
 	printf("\n");
 	
-	while ((max_value >> i) != 0)
+	while (i < max_value)
 	{
 		j = 0;
 		while (j++ < size)
