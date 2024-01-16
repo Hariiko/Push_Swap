@@ -55,7 +55,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 		while (ft_lstsize(*stack_b) != 0)
 			pa(stack_a, stack_b);
 		i++;
-		print_list(*stack_a);
+	//	print_list(*stack_a);
 	}
-	print_list(*stack_a);
+	//print_list(*stack_a);
 }

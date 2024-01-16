@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/16 14:00:42 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:21:39 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,6 @@ int main(int argc, char **argv)
 	index_stack(a);
 	radix_sort(a, b);
 	ft_lstclear(a);
-	printf("OK\n");
+//	printf("OK\n");
 	return (0);
 }
