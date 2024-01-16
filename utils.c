@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:41 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/15 20:23:16 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:00:58 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,44 +64,4 @@ t_list	*ft_lstlast(t_list *lst)
 	while (temp->next != NULL)
 		temp = temp->next;
 	return (temp);
-}
-
-static t_list	*get_next_min(t_list **stack)
-{
-	t_list	*head;
-	t_list	*min;
-	int		has_min;
-
-	min = NULL;
-	has_min = 0;
-	head = *stack;
-	if (head)
-	{
-		while (head)
-		{
-			if (!has_min || head->num < min->num)
-			{
-				min = head;
-				has_min = 1;
-			}
-			head = head->next;
-		}
-	}
-	return (min);
-}
-
-void	index_stack(t_list **stack)
-{
-	t_list	*min;
-	int		index;
-	t_list	*temp;
-
-	index = 0;
-	min = get_next_min(stack);
-	temp = *stack;
-	while (temp)
-	{
-		temp->index = index++;
-		temp = temp->next;
-	}
 }

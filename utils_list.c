@@ -23,9 +23,10 @@ t_list	*ft_lstnew(int num)
 {
 	t_list	*new;
 	new = malloc(sizeof(t_list));
-	if (new == NULL)
+	if (!new)
 		return (NULL);
 	new->num = num;
+	new->index = -1;
 	new->next = NULL;
 	return (new);
 }

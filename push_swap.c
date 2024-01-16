@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/15 19:29:19 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:00:42 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,6 @@ int prueba(char *str) {
 	return (contador);
 }
 
-void print_list(t_list *head)
-{
-    while (head)
-    {
-        printf("%d ", head->num);
-        head = head->next;
-    }
-    printf("\n");
-}
-
 int main(int argc, char **argv)
 {
 	int i=1;
@@ -139,7 +129,6 @@ int main(int argc, char **argv)
 	b = (t_list **)malloc(sizeof(t_list));
 	index_stack(a);
 	radix_sort(a, b);
-	print_list(*a);
 	ft_lstclear(a);
 	printf("OK\n");
 	return (0);

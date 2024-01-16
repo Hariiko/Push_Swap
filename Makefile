@@ -6,7 +6,7 @@
 #    By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 14:10:17 by laltarri          #+#    #+#              #
-#    Updated: 2024/01/15 15:51:27 by laltarri         ###   ########.fr        #
+#    Updated: 2024/01/16 17:01:46 by laltarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS	=	push_swap.c \
 			utils.c		\
 			utils_list.c \
 			radix.c 	\
-			instructions.c 
+			instructions.c \
+		   	index.c	
 
 OBJS	= 	$(SRCS:.c=.o)
 
