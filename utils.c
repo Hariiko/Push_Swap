@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:41 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/25 13:25:52 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:00:58 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,25 @@ long long ft_atol(const char *str)
 	return (num * sign);
 }
 
+void	ft_putend(char *str, int num)
+{
+	write(1, str, num);
+	write(1,"\n",1);
+}
+
+int	ft_puterror(void)
+{
+	write(2, "Error\n", 6);
+	return (-1);
+}
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*temp;
+
+	temp = lst;
+	if (temp == NULL)
+		return (NULL);
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
+}

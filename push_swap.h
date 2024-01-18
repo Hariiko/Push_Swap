@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:24 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/25 12:29:49 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:01:34 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,24 @@
 typedef struct s_list
 {
 	int				num;
+	int				index;
 	struct s_list	*next;
 }				t_list;
 //list
 void	ft_lstclear(t_list **lst);
 t_list	*ft_lstnew(int num);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-
+int	ft_lstsize(t_list *lst);
+void radix_sort(t_list **stack_a, t_list **stack_b);
 //
+int	ft_puterror(void);
 int ft_strlen(const char *s);
 long long ft_atol(const char *str);
+void ft_putend(char *str, int num);
+t_list	*ft_lstlast(t_list *lst);
+int pa(t_list **a, t_list **b);
+int pb(t_list **b, t_list **a);
+int ra(t_list **a);
+void	index_stack(t_list **stack);
 
 #endif

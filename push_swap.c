@@ -6,17 +6,11 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2023/11/25 19:50:31 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:21:39 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_puterror(void)
-{
-	write(2, "Error\n", 6);
-	return (-1);
-}
 
 int check_duplicate(int argc, char ** argv)
 {
@@ -112,20 +106,11 @@ int prueba(char *str) {
 	return (contador);
 }
 
-void print_list(t_list *head)
-{
-    while (head)
-    {
-        printf("%d ", head->num);
-        head = head->next;
-    }
-    printf("\n");
-}
-
 int main(int argc, char **argv)
 {
 	int i=1;
-	t_list	*a;
+	t_list	**a;
+	t_list	**b;
 
 	if(check_argv(argc, argv) == 0)
 		return (ft_puterror());
@@ -137,11 +122,14 @@ int main(int argc, char **argv)
 	}
 	if(check_duplicate(argc,argv) == 0)
 		return (ft_puterror());
-	a = arrstr_to_arrint(argc,argv);
+	a = (t_list **)malloc(sizeof(t_list));
+	*a = arrstr_to_arrint(argc,argv);
 	if(a == NULL)
 		return(ft_puterror());
-	print_list(a);
-	ft_lstclear(&a);
-	printf("OK\n");
+	b = (t_list **)malloc(sizeof(t_list));
+	index_stack(a);
+	radix_sort(a, b);
+	ft_lstclear(a);
+//	printf("OK\n");
 	return (0);
 }

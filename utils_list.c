@@ -23,9 +23,10 @@ t_list	*ft_lstnew(int num)
 {
 	t_list	*new;
 	new = malloc(sizeof(t_list));
-	if (new == NULL)
+	if (!new)
 		return (NULL);
 	new->num = num;
+	new->index = -1;
 	new->next = NULL;
 	return (new);
 }
@@ -43,4 +44,16 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	if (! *lst)
 		*lst = new;
+}
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }
