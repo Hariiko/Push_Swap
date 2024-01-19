@@ -57,5 +57,5 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 		i++;
 	//	print_list(*stack_a);
 	}
-	//print_list(*stack_a);
+	print_list(*stack_a);
 }

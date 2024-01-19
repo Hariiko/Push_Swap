@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_radix.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/19 19:55:10 by laltarri          #+#    #+#             */
+/*   Updated: 2024/01/19 20:23:22 by laltarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
 static int	get_min(t_list **stack, int val)
 {
 	t_list	*head;
@@ -97,6 +111,36 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 	pb(stack_a, stack_b);
 	sort_4(stack_a, stack_b);
 	pa(stack_a, stack_b);
+}
+int	is_sorted(t_list **stack)
+{
+	t_list	*head;
+
+	head = *stack;
+	while (head && head->next)
+	{
+		if (head->num > head->next->num)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
+
+int	get_distance(t_list **stack, int index)
+{
+	t_list	*head;
+	int		distance;
+
+	distance = 0;
+	head = *stack;
+	while (head)
+	{
+		if (head->index == index)
+			break ;
+		distance++;
+		head = head->next;
+	}
+	return (distance);
 }
 
 void	simple_sort(t_list **stack_a, t_list **stack_b)
