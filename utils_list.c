@@ -45,6 +45,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (! *lst)
 		*lst = new;
 }
+
 int	ft_lstsize(t_list *lst)
 {
 	int	i;
@@ -56,4 +57,16 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 	}
 	return (i);
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*temp;
+
+	temp = lst;
+	if (temp == NULL)
+		return (NULL);
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
 }

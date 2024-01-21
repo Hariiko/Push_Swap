@@ -18,7 +18,10 @@ SRCS	=	push_swap.c \
 			utils.c		\
 			utils_list.c \
 			radix.c 	\
-			instructions.c \
+			insshap.c.c \
+			insreverse.c \
+			insrotate \
+			inspush.c \
 		   	index.c	\
 			small_radix.c
 

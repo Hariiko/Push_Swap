@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int check_duplicate(int argc, char ** argv)
+int check_duplicate(int argc, char **argv)
 {
 	int i;
 	int j;
@@ -65,7 +65,6 @@ t_list *arrstr_to_arrint(int argc, char **argv)
 	nums = NULL;
 	tem = NULL;
 	i = 1;
-
 	while(i < argc)
 	{
 		num = ft_atol(argv[i]);
@@ -86,7 +85,7 @@ t_list *arrstr_to_arrint(int argc, char **argv)
 	return (nums);
 }
 
-int prueba(char *str) {
+int contnum(char *str) {
     int i = 0;
     int contador = 0;
     
@@ -116,7 +115,7 @@ int main(int argc, char **argv)
 		return (ft_puterror());
 	while(i < argc)
 	{
-		if(prueba(argv[i]) > 12)
+		if(contnum(argv[i]) > 12)
 			return (ft_puterror());
 		i++;
 	}
@@ -129,7 +128,7 @@ int main(int argc, char **argv)
 	b = (t_list **)malloc(sizeof(t_list));
 	index_stack(a);
 	if(ft_lstsize(*a) < 6)
-		simple_sort(a,b);
+		simple_short(a,b);
 	else
 		radix_sort(a, b);
 	ft_lstclear(a);

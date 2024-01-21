@@ -12,63 +12,63 @@
 
 #include "push_swap.h"
 
-static int	get_min(t_list **stack, int val)
+static int	get_min(t_list **list, int val)
 {
-	t_list	*head;
+	t_list	*temp;
 	int		min;
 
-	head = *stack;
-	min = head->index;
-	while (head->next)
+	temp = *list;
+	min = temp->index;
+	while (temp->next)
 	{
-		head = head->next;
-		if ((head->index < min) && head->index != val)
-			min = head->index;
+		temp = temp->next;
+		if ((temp->index < min) && temp->index != val)
+			min = temp->index;
 	}
 	return (min);
 }
 
-static void	sort_3(t_list **stack_a)
+static void	short_3(t_list **list_a)
 {
-	t_list	*head;
+	t_list	*temp;
 	int		min;
 	int		next_min;
 
-	head = *stack_a;
-	min = get_min(stack_a, -1);
-	next_min = get_min(stack_a, min);
-	if (is_sorted(stack_a))
+	temp = *list_a;
+	min = get_min(list_a, -1);
+	next_min = get_min(list_a, min);
+	if (is_shorted(list_a))
 		return ;
-	if (head->index == min && head->next->index != next_min)
+	if (temp->index == min && temp->next->index != next_min)
 	{
-		ra(stack_a);
-		sa(stack_a);
-		rra(stack_a);
+		ra(list_a);
+		sa(list_a);
+		rra(list_a);
 	}
-	else if (head->index == next_min)
+	else if (temp->index == next_min)
 	{
-		if (head->next->index == min)
-			sa(stack_a);
+		if (temp->next->index == min)
+			sa(list_a);
 		else
-			rra(stack_a);
+			rra(list_a);
 	}
 	else
 	{
-		if (head->next->index == min)
-			ra(stack_a);
+		if (temp->next->index == min)
+			ra(list_a);
 		else
 		{
-			sa(stack_a);
-			rra(stack_a);
+			sa(list_a);
+			rra(list_a);
 		}
 	}
 }
 
-static void	sort_4(t_list **stack_a, t_list **stack_b)
+static void	short_4(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 
-	if (is_sorted(stack_a))
+	if (is_shorted(stack_a))
 		return ;
 	distance = get_distance(stack_a, get_min(stack_a, -1));
 	if (distance == 1)
@@ -80,14 +80,14 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 	}
 	else if (distance == 3)
 		rra(stack_a);
-	if (is_sorted(stack_a))
+	if (is_shorted(stack_a))
 		return ;
 	pb(stack_a, stack_b);
-	sort_3(stack_a);
+	short_3(stack_a);
 	pa(stack_a, stack_b);
 }
 
-void	sort_5(t_list **stack_a, t_list **stack_b)
+void	short_5(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 
@@ -106,13 +106,13 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 	}
 	else if (distance == 4)
 		rra(stack_a);
-	if (is_sorted(stack_a))
+	if (is_shorted(stack_a))
 		return ;
 	pb(stack_a, stack_b);
-	sort_4(stack_a, stack_b);
+	short_4(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
-int	is_sorted(t_list **stack)
+int	is_shorted(t_list **stack)
 {
 	t_list	*head;
 
@@ -143,20 +143,20 @@ int	get_distance(t_list **stack, int index)
 	return (distance);
 }
 
-void	simple_sort(t_list **stack_a, t_list **stack_b)
+void	simple_short(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
 
-	if (is_sorted(stack_a) || ft_lstsize(*stack_a) == 0
+	if (is_shorted(stack_a) || ft_lstsize(*stack_a) == 0
 		|| ft_lstsize(*stack_a) == 1)
 		return ;
 	size = ft_lstsize(*stack_a);
 	if (size == 2)
 		sa(stack_a);
 	else if (size == 3)
-		sort_3(stack_a);
+		short_3(stack_a);
 	else if (size == 4)
-		sort_4(stack_a, stack_b);
+		short_4(stack_a, stack_b);
 	else if (size == 5)
-		sort_5(stack_a, stack_b);
+		short_5(stack_a, stack_b);
 }

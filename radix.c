@@ -1,61 +1,50 @@
 #include "push_swap.h"
 
-void print_list(t_list *head)
+static int	get_max_bits(t_list **list)
 {
-    while (head)
-    {
-        printf("%d ", head->num);
-        head = head->next;
-    }
-    printf("\n");
-}
-static int	get_max_bits(t_list **stack)
-{
-	t_list	*head;
+	t_list	*temp;
 	int		max;
 	int		max_bits;
 
-	head = *stack;
-	max = head->index;
+	temp = *list;
+	max = temp->index;
 	max_bits = 0;
-	while (head)
+	while (temp)
 	{
-		if (head->index > max)
-			max = head->index;
-		head = head->next;
+		if (temp->index > max)
+			max = temp->index;
+		temp = temp->next;
 	}
 	while ((max >> max_bits) != 0)
 		max_bits++;
 	return (max_bits);
 }
 
-void	radix_sort(t_list **stack_a, t_list **stack_b)
+void	radix_sort(t_list **list_a, t_list **list_b)
 {
-	t_list	*head_a;
+	t_list	*temp_a;
 	int		i;
 	int		j;
 	int		size;
 	int		max_bits;
 
 	i = 0;
-	head_a = *stack_a;
-	size = ft_lstsize(head_a);
-	max_bits = get_max_bits(stack_a);
+	temp_a = *list_a;
+	size = ft_lstsize(temp_a);
+	max_bits = get_max_bits(list_a);
 	while (i < max_bits)
 	{
 		j = 0;
 		while (j++ < size)
 		{
-			head_a = *stack_a;
-			if (((head_a->index >> i) & 1) == 1)
-				ra(stack_a);
+			temp_a = *list_a;
+			if (((temp_a->index >> i) & 1) == 1)
+				ra(list_a);
 			else
-				pb(stack_a, stack_b);
+				pb(list_a, list_b);
 		}
-		while (ft_lstsize(*stack_b) != 0)
-			pa(stack_a, stack_b);
+		while (ft_lstsize(*list_b) != 0)
+			pa(list_a, list_b);
 		i++;
-	//	print_list(*stack_a);
 	}
-	print_list(*stack_a);
 }
