@@ -6,7 +6,7 @@
 #    By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 14:10:17 by laltarri          #+#    #+#              #
-#    Updated: 2024/01/19 19:51:40 by laltarri         ###   ########.fr        #
+#    Updated: 2024/01/22 16:06:14 by laltarri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,13 @@ SRCS	=	push_swap.c \
 			utils.c		\
 			utils_list.c \
 			radix.c 	\
-			insshap.c.c \
+			insshap.c \
 			insreverse.c \
-			insrotate \
+			insrotate.c \
 			inspush.c \
 		   	index.c	\
-			small_radix.c
+			small_radix.c \
+			simple_short.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

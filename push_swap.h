@@ -6,7 +6,7 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:24 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/19 20:23:20 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:09:13 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 	int				index;
 	struct s_list	*next;
 }				t_list;
+
 long long	ft_atol(const char *str);
 t_list		*ft_lstnew(int num);
 t_list		*ft_lstlast(t_list *lst);
@@ -45,7 +46,7 @@ int			push(t_list **stack_to, t_list **stack_from);
 int			rotate(t_list **stack);
 int			rb(t_list **stack_b);
 int			rr(t_list **stack_a, t_list **stack_b);
-int			reverseRotate(t_list **stack);
+int			reverse_rotate(t_list **stack);
 int			rra(t_list **stack_a);
 int			rrb(t_list **stack_b);
 int			rrr(t_list **stack_a, t_list **stack_b);
@@ -53,4 +54,13 @@ void		index_stack(t_list **stack);
 void		simple_short(t_list **stack_a, t_list **stack_b);
 int			is_shorted(t_list **stack);
 int			get_distance(t_list **stack, int index);
+int			get_distance(t_list **stack, int index);
+void		simple_short(t_list **stack_a, t_list **stack_b);
+int			is_shorted(t_list **stack);
+void		short_5(t_list **stack_a, t_list **stack_b);
+void		short_4(t_list **stack_a, t_list **stack_b);
+void		short_3(t_list **list_a);
+int			get_min(t_list **list, int val);
+void		instruction_first(t_list **list_a);
+void		instruction_second(t_list **list_a);
 #endif

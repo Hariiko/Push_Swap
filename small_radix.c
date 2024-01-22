@@ -6,13 +6,13 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:55:10 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/19 20:23:22 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:35:36 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_min(t_list **list, int val)
+int	get_min(t_list **list, int val)
 {
 	t_list	*temp;
 	int		min;
@@ -28,7 +28,7 @@ static int	get_min(t_list **list, int val)
 	return (min);
 }
 
-static void	short_3(t_list **list_a)
+void	short_3(t_list **list_a)
 {
 	t_list	*temp;
 	int		min;
@@ -40,11 +40,7 @@ static void	short_3(t_list **list_a)
 	if (is_shorted(list_a))
 		return ;
 	if (temp->index == min && temp->next->index != next_min)
-	{
-		ra(list_a);
-		sa(list_a);
-		rra(list_a);
-	}
+		instruction_first(list_a);
 	else if (temp->index == next_min)
 	{
 		if (temp->next->index == min)
@@ -57,14 +53,11 @@ static void	short_3(t_list **list_a)
 		if (temp->next->index == min)
 			ra(list_a);
 		else
-		{
-			sa(list_a);
-			rra(list_a);
-		}
+			instruction_second(list_a);
 	}
 }
 
-static void	short_4(t_list **stack_a, t_list **stack_b)
+void	short_4(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 
@@ -112,6 +105,7 @@ void	short_5(t_list **stack_a, t_list **stack_b)
 	short_4(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
+
 int	is_shorted(t_list **stack)
 {
 	t_list	*head;
@@ -124,39 +118,4 @@ int	is_shorted(t_list **stack)
 		head = head->next;
 	}
 	return (1);
-}
-
-int	get_distance(t_list **stack, int index)
-{
-	t_list	*head;
-	int		distance;
-
-	distance = 0;
-	head = *stack;
-	while (head)
-	{
-		if (head->index == index)
-			break ;
-		distance++;
-		head = head->next;
-	}
-	return (distance);
-}
-
-void	simple_short(t_list **stack_a, t_list **stack_b)
-{
-	int	size;
-
-	if (is_shorted(stack_a) || ft_lstsize(*stack_a) == 0
-		|| ft_lstsize(*stack_a) == 1)
-		return ;
-	size = ft_lstsize(*stack_a);
-	if (size == 2)
-		sa(stack_a);
-	else if (size == 3)
-		short_3(stack_a);
-	else if (size == 4)
-		short_4(stack_a, stack_b);
-	else if (size == 5)
-		short_5(stack_a, stack_b);
 }

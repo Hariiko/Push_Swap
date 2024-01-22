@@ -1,27 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/22 15:39:06 by laltarri          #+#    #+#             */
+/*   Updated: 2024/01/22 16:56:27 by laltarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_lstclear(t_list **lst)
 {
 	t_list	*temp;
-    t_list  *head;
+	t_list	*head;
 
-    if (!lst || !*lst)
-        return;
-
-    head = *lst;
+	if (!lst || !*lst)
+		return ;
+	head = *lst;
 	while (head)
 	{
-        temp = head;
+		temp = head;
 		head = head->next;
 		free(temp);
 	}
-    *lst = NULL; 
+	*lst = NULL ;
 }
-
 
 t_list	*ft_lstnew(int num)
 {
 	t_list	*new;
+
 	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);

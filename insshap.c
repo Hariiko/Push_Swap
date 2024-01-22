@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   insshap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/22 15:37:39 by laltarri          #+#    #+#             */
+/*   Updated: 2024/01/22 19:07:11 by laltarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -13,7 +24,7 @@ int	swap(t_list **list)
 	temp = *list;
 	next = temp->next;
 	if (!temp && !next)
-		return(ft_puterror());
+		return (ft_puterror());
 	tmp_val = temp->num;
 	tmp_index = temp->index;
 	temp->num = next->num;
@@ -40,7 +51,7 @@ int	sb(t_list **list_b)
 }
 
 int	ss(t_list **list_a, t_list **list_b)
-{	
+{
 	if ((ft_lstsize(*list_a) < 2) || (ft_lstsize(*list_b) < 2))
 		return (-1);
 	swap(list_a);

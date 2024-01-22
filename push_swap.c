@@ -6,24 +6,24 @@
 /*   By: laltarri <laltarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:50 by laltarri          #+#    #+#             */
-/*   Updated: 2024/01/19 20:25:05 by laltarri         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:06:37 by laltarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check_duplicate(int argc, char **argv)
+int	check_duplicate(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
-		j = 1;		
-		while(j < argc)
+		j = 1;
+		while (j < argc)
 		{
-			if(i != j && ft_atol(argv[i]) == ft_atol(argv[j]))
+			if (i != j && ft_atol(argv[i]) == ft_atol(argv[j]))
 				return (0);
 			j++;
 		}
@@ -32,103 +32,98 @@ int check_duplicate(int argc, char **argv)
 	return (1);
 }
 
-int check_argv(int argc, char **argv)
+int	check_argv(int argc, char **argv)
 {
-	int i;
-	int j;
-	int e;
-	
+	int	i;
+	int	j;
+	int	e;
+
 	i = 0;
 	while (++i < argc)
 	{
 		e = 0;
 		j = ft_strlen(argv[i]);
-		if(argv[i][0] == '-' || argv[i][0] == '+')
+		if (argv[i][0] == '-' || argv[i][0] == '+')
 			e++;
-		while(e < j)
+		while (e < j)
 		{
 			if (!(argv[i][e] >= '0' && argv[i][e] <= '9'))
-				return(0);
+				return (0);
 			e++;
 		}
 	}
 	return (1);
 }
 
-t_list *arrstr_to_arrint(int argc, char **argv)
+t_list	*arrstr_to_arrint(int argc, char **argv)
 {
-	t_list *nums;
-	t_list *tem;
-	int i;
-	long long num;
-	
+	long long	num;
+	t_list		*nums;
+	t_list		*tem;
+	int			i;
+
 	nums = NULL;
 	tem = NULL;
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		num = ft_atol(argv[i]);
-		if(num > INT_MAX || num < INT_MIN)
-		{
-			ft_lstclear(&nums);
-			return (NULL);
-		}
+		if (num > INT_MAX || num < INT_MIN)
+			return (ft_lstclear(&nums), NULL);
 		tem = ft_lstnew(num);
 		if (!tem)
-        {
-            ft_lstclear(&nums);
-            return (NULL);
-        }
-		ft_lstadd_back(&nums,tem);
+			return (ft_lstclear(&nums), NULL);
+		ft_lstadd_back(&nums, tem);
 		i++;
 	}
 	return (nums);
 }
 
-int contnum(char *str) {
-    int i = 0;
-    int contador = 0;
-    
-    while (str[i] != '\0')
+int	contnum(char *str)
+{
+	int	i;
+	int	contador;
+
+	i = 0;
+	contador = 0;
+	while (str[i] != '\0')
 	{
-        if (str[0] == '-' || str[0] == '+')
+		if (str[0] == '-' || str[0] == '+')
 		{
-            contador++; 
-            while (str[i + 1] != '\0' && str[i + 1] != '-' && str[i + 1] != '+')
+			contador++;
+			while (str[i + 1] != '\0' && str[i + 1] != '-' && str[i + 1] != '+')
 			{
-                i++;
-                contador++;
-            }
-        }
-        i++;
-    }
+				i++;
+				contador++;
+			}
+		}
+		i++;
+	}
 	return (contador);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int i=1;
 	t_list	**a;
 	t_list	**b;
+	int		i;
 
-	if(check_argv(argc, argv) == 0)
+	i = 0;
+	a = (t_list **)malloc(sizeof(t_list));
+	b = (t_list **)malloc(sizeof(t_list));
+	if (check_argv(argc, argv) == 0 || !a
+		|| !b || check_duplicate(argc, argv) == 0)
 		return (ft_puterror());
-	while(i < argc)
+	while (i < argc)
 	{
-		if(contnum(argv[i]) > 12)
+		if (contnum(argv[i]) > 12)
 			return (ft_puterror());
 		i++;
 	}
-	if(check_duplicate(argc,argv) == 0)
-		return (ft_puterror());
-	a = (t_list **)malloc(sizeof(t_list));
-	*a = arrstr_to_arrint(argc,argv);
-	if(a == NULL)
-		return(ft_puterror());
-	b = (t_list **)malloc(sizeof(t_list));
+	*a = arrstr_to_arrint(argc, argv);
 	index_stack(a);
-	if(ft_lstsize(*a) < 6)
-		simple_short(a,b);
+	if (ft_lstsize(*a) < 6)
+		simple_short(a, b);
 	else
 		radix_sort(a, b);
 	ft_lstclear(a);
